@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/NeeleshRoy/travel-server#readme",
   "devDependencies": {
-    "eslint": "^7.3.0",
     "nodemon": "^2.0.4",
     "pm2": "^4.4.0"
   },
