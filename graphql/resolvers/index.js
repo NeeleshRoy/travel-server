@@ -1,23 +1,35 @@
-const mock = require('../../mock/plans');
+const objectId = require('mongoose').Types.ObjectId;
 const { createPlan, editPlan } = require('../mutations');
+const Plan = require('../../database/models/Plans');
 
-const getPlan = (args) => {
-    const id = args.id;
-    return mock.filter(plan => {
-        return plan.id == id;
-    })[0];
-}
-const getPlans = function (args) {
-    if (args.id) {
-        const id = args.id;
-        return mock.filter(plan => plan.consultantId === id);
-    } else {
-        return mock;
+const getPlanById = async (args) => {
+    const { id } = args;
+    if (!objectId.isValid(id)) return new Error('ID is not valid');
+    console.log(args)
+    try {
+        const result = await Plan.findById(id);
+        return result;
+    } catch (error) {
+        console.log(error);
+        throw error;
     }
 }
+
+const getPlansByConsultant = async (args) => {
+    const { id } = args;
+    if (!objectId.isValid(id)) return new Error('Consultant ID is not valid');
+    try {
+        const result = await Plan.find({ consultantId: objectId(id) });
+        return result;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
 const root = {
-    plan: getPlan,
-    plans: getPlans,
+    planById: getPlanById,
+    plansByConsultant: getPlansByConsultant,
     createPlan,
     editPlan
 };

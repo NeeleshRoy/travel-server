@@ -1,8 +1,8 @@
 const graphql = require('graphql');
 const schema = graphql.buildSchema(`
     type RootQuery {
-        plan(id: ID!): Plan
-        plans(id: ID!): [Plan]
+        planById(id: ID!): Plan
+        plansByConsultant(id: ID!): [Plan]
     }
 
     type RootMutation {
