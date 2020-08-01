@@ -8,6 +8,24 @@ const schema = graphql.buildSchema(`
     type RootMutation {
         createPlan(planInput: PlanInput): Plan
         editPlan(editPlanInput: EditPlanInput): Plan
+        createConsultant(consultantInput: ConsultantInput): Consultant
+    }
+
+    input ConsultantInput {
+        firstname: String!
+        lastname: String!
+        primaryPhone: String!
+        travelXp: Float!
+        about: String!
+        primaryPlaces: [String]!
+        profilePicture: String
+        email: String
+        social: [String]
+        plans: [String]
+        profession: String
+        tags: [String]
+        ratings: String
+        reviews: [String]
     }
 
     input EditPlanInput {
@@ -77,6 +95,24 @@ const schema = graphql.buildSchema(`
         vlog: [String]
         consultantId: ID!
         itinerary: [Itinerary]
+    }
+
+    type Consultant {
+        _id: ID!
+        firstname: String!
+        lastname: String!
+        primaryPhone: String!
+        travelXp: Float!
+        about: String!
+        primaryPlaces: [String]!
+        profilePicture: String
+        email: String
+        social: [String]
+        plans: [String]
+        profession: String
+        tags: [String]
+        ratings: String
+        reviews: [String]
     }
 
     schema {

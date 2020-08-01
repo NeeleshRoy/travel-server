@@ -1,5 +1,5 @@
 const objectId = require('mongoose').Types.ObjectId;
-const { createPlan, editPlan } = require('../mutations');
+const { createPlan, editPlan, createConsultant } = require('../mutations');
 const Plan = require('../../database/models/Plans');
 
 const getPlanById = async (args) => {
@@ -30,7 +30,8 @@ const root = {
     planById: getPlanById,
     plansByConsultant: getPlansByConsultant,
     createPlan,
-    editPlan
+    editPlan,
+    createConsultant
 };
 
 module.exports = root
