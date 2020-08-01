@@ -45,5 +45,5 @@ app.use(async (req, res, next) => {
 app.use('/api', routes);
 
 connectToDb().then(() => {
-    app.listen(process.env.PORT, () => console.log('Express GraphQL Server Now Running On localhost:4000/graphql'));
+    app.listen(process.env.PORT, () => console.log(`Express GraphQL Server Now Running On localhost:${process.env.PORT}/graphql`));
 }).catch(err => console.error(err))
