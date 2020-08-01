@@ -1,5 +1,4 @@
 const Plan = require('../../database/models/Plans')
-const Consultant = require('../../database/models/Consultant')
 const createPlan = async (args) => {
   const {
     name,
@@ -35,10 +34,6 @@ const createPlan = async (args) => {
 
   try {
     const result = await plan.save();
-    const consultant = await Consultant.findById(consultantId);
-    await consultant.plans.push(result.id);
-    await consultant.save();
-
     return { ...result._doc, _id: result.id };
   } catch (err) {
     console.log(err);

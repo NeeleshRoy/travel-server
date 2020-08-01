@@ -1,0 +1,14 @@
+.home {
+    padding-top: 40px;
+    height: 100vh;
+    background: url('https://source.unsplash.com/n--CMLApjfI/1400x900') center center no-repeat fixed;
+    background-size: cover;
+    .cta_home {
+        background: deeppink;
+        max-width: 500px;
+        max-height: 100px;
+        padding: 20px;
+        color: white;
+        text-align: center;
+    }
+}
