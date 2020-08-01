@@ -5,7 +5,6 @@ const Plan = require('../../database/models/Plans');
 const getPlanById = async (args) => {
     const { id } = args;
     if (!objectId.isValid(id)) return new Error('ID is not valid');
-    console.log(args)
     try {
         const result = await Plan.findById(id);
         return result;
