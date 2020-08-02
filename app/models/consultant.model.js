@@ -19,10 +19,6 @@ const Consultant = new Schema({
         type: types.Number,
         required: true
     },
-    about: {
-        type: types.String,
-        required: true
-    },
     primaryPlaces: {
         type: types.Array,
         required: true
@@ -41,6 +37,7 @@ const Consultant = new Schema({
             ref: "Role"
         }
     ],
+    about: types.String,
     profilePicture: types.String,
     social: types.Array,
     plans: types.Array,
