@@ -7,6 +7,7 @@ db.mongoose = mongoose;
 
 db.consultant = require("./consultant.model");
 db.role = require("./role.model");
+db.plan = require("./plan.model");
 
 db.ROLES = ["consultant", "admin"];
 

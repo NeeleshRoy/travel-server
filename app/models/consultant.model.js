@@ -40,7 +40,12 @@ const Consultant = new Schema({
     about: types.String,
     profilePicture: types.String,
     social: types.Array,
-    plans: types.Array,
+    plans: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Plan"
+        }
+    ],
     profession: types.String,
     tags: types.Array,
     ratings: types.Number,
