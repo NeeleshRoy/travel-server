@@ -1,10 +1,13 @@
-const config = require("../config/auth.config");
 const db = require("../models");
 const Consultant = db.consultant;
 const Role = db.role;
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
+
+const config = {
+    secret: process.env.JWT_SECRET
+};
 
 exports.signup = (req, res) => {
     const {

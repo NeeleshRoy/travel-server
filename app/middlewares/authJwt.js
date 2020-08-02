@@ -1,8 +1,11 @@
 const jwt = require("jsonwebtoken");
-const config = require("../config/db.config");
 const db = require("../models");
 const Consultant = db.consultant;
 const Role = db.role;
+
+const config = {
+    secret: process.env.JWT_SECRET
+}
 
 verifyToken = (req, res, next) => {
     let token = req.headers["x-access-token"];

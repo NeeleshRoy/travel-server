@@ -3,17 +3,20 @@ const ROLES = db.ROLES;
 const Consultant = db.consultant;
 
 const checkDuplicateEmail = async (req, res, next) => {
-    try {
-        const result = await Consultant.findOne({ email: req.body.email });
-        console.log(result);
-        if (result._id) {
-            res.status(400).send({ message: "email is already in use" })
+    Consultant.findOne({
+        email: req.body.email
+    }).exec((err, consultant) => {
+        if (err) {
+            res.status(500).send({ message: err });
+            return;
         }
-    } catch (error) {
-        res.status(500).send({ message: error });
-    }
 
-    next();
+        if (consultant) {
+            res.status(400).send({ message: "Failed! Email is already in use!" });
+            return;
+        }
+        next();
+    });
 }
 
 const checkRolesExisted = (req, res, next) => {
@@ -23,6 +26,7 @@ const checkRolesExisted = (req, res, next) => {
                 res.status(400).send({
                     message: `Failed! Role ${req.body.roles[i]} does not exist!`
                 });
+                console.log('here 3')
                 return;
             }
         }
