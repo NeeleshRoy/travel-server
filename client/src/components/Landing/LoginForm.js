@@ -30,7 +30,7 @@ export default class LoginForm extends Component {
             return false;
         }
 
-        const isLoggedIn = await checkLogin(email, password);
+        const isLoggedIn = await checkLogin({ email, password });
         console.log(isLoggedIn);
     }
 
