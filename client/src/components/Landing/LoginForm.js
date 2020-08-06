@@ -42,6 +42,7 @@ export default class LoginForm extends Component {
         const value = event.target.value;
         if (!value) return false;
         if (event.target.name === 'email') {
+            // eslint-disable-next-line
             const test = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/.test(value)
 
             if (!test) {

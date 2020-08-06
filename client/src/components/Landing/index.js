@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Dashboard from '../Dashboard';
 import FrontPage from './FrontPage';
 import 'bulma/css/bulma.css';
@@ -9,18 +9,15 @@ function Landing() {
     const [user, setUser] = useState({});
     const [cookies, setCookie] = useCookies('at');
 
-    useEffect(() => {
-        if (cookies.at && cookies.role) {
-            const { at, role } = cookies;
-
-            setUser({ token: at, role });
-            setLogin(true);
-        }
-    }, [user])
+    if (cookies.at && cookies.role && !isLoggedIn) {
+        const userDetails = { role: cookies.role, token: cookies.at }
+        setUser(userDetails)
+        setLogin(true);
+    }
 
     function initiateLogin(user) {
         const { token, role } = user;
-        setUser({ token, role });
+        setUser(user);
         setCookie('at', token, { maxAge: 10800 });
         setCookie('role', role, { maxAge: 10800 });
         setLogin(true);
