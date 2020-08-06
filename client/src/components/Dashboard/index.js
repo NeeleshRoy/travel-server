@@ -1,7 +1,13 @@
 import React from 'react';
 
-const Dashboard = () => {
-    return (<div>This is Dashboard</div>)
+import Admin from './Admin';
+import Consultant from './Consultant';
+
+const Dashboard = (props) => {
+    return (
+        props.role === 'admin' ? <Admin /> :
+            <Consultant token={props.user.token} role={props.user.role} />
+    )
 }
 
 export default Dashboard;

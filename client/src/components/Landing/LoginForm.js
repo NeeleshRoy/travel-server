@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import checkLogin from '../../translate/checkLogin';
+import { checkLogin } from '../../translate';
 
 export default class LoginForm extends Component {
     constructor(props) {
@@ -30,8 +30,12 @@ export default class LoginForm extends Component {
             return false;
         }
 
-        const isLoggedIn = await checkLogin({ email, password });
-        console.log(isLoggedIn);
+        const user = await checkLogin({ email, password });
+        if (user) {
+            this.props.initiateLogin(user);
+        } else {
+            throw Error('Internal Systems problem');
+        }
     }
 
     validateInput(event) {

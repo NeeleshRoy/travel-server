@@ -1,17 +1,28 @@
-import React from 'react';
-import LoginForm from './LoginForm';
+import React, { useState } from 'react';
+import Dashboard from '../Dashboard';
+import FrontPage from './FrontPage';
 import 'bulma/css/bulma.css';
+import { useCookies } from 'react-cookie';
 
-const Landing = () => {
+function Landing() {
+    const [isLoggedIn, setLogin] = useState(false);
+    const [user, setUser] = useState({});
+    const [at, setToken] = useCookies('at');
+
+    function initiateLogin(user) {
+        const { token, role } = user;
+        setUser({ token, role });
+        setToken('at', token, { maxAge: 10800 });
+
+        setLogin(true);
+    }
+
     return (
-        <div className="container">
-            <div className="columns">
-                <div className="column">
-                    <h1>Travel Administration</h1>
-                </div>
-                <div className="column">
-                    <LoginForm />
-                </div>
+        <div>
+            <div className="container">
+                {isLoggedIn ?
+                    <Dashboard user={user} /> :
+                    <FrontPage initiateLogin={initiateLogin} />}
             </div>
         </div>
     )
