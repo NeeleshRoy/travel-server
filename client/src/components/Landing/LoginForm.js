@@ -65,7 +65,7 @@ export default class LoginForm extends Component {
 
     render() {
         return (
-            <form onSubmit={this.login}>
+            <form onSubmit={this.login} className="mt-3">
                 <div className="field">
                     <div className="control">
                         <input onChange={this.validateInput} name="email" className={this.state.email ? 'input is-danger' : 'input isPrimary'} type="text" placeholder="Email Address" />
@@ -82,7 +82,7 @@ export default class LoginForm extends Component {
 
                 <button
                     type="submit"
-                    className={this.state.isValid ? "button is-primary" : "button is-light"}
+                    className="button is-primary"
                     {...this.state.isValid ? "disabled" : ""}>
                     Sign in
                     </button>
