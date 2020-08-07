@@ -147,3 +147,27 @@ exports.editPlan = (req, res) => {
         }
     })
 }
+
+exports.deletePlan = (req, res) => {
+    const token = req.headers['x-access-token'];
+
+    if (!token) {
+        return res.status(403).send({ message: "No token provided!" });
+    }
+
+    jwt.verify(token, config.secret, (err, decoded) => {
+        if (err) {
+            return res.status(401).send({ message: "Unauthorized!" });
+        }
+    });
+
+    const planId = req.params.id;
+
+    Plan.findByIdAndDelete(planId, (err, deleted) => {
+        if (err) {
+            res.status(404).send({ message: err })
+        } else {
+            res.status(200).send({ message: "successfully deleted" });
+        }
+    })
+}

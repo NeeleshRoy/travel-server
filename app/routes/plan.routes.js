@@ -12,4 +12,5 @@ module.exports = function (app) {
     app.post("/api/consultant/plan", controller.savePlan);
     app.get("/api/consultant/plans", controller.getPlans);
     app.put("/api/consultant/plan/edit/:id", controller.editPlan);
+    app.delete("/api/consultant/plan/edit/:id", controller.deletePlan);
 };
