@@ -47,3 +47,24 @@ export const getUserDetails = async (userOptions) => {
 
     }
 }
+
+export const getConsultantPlans = async (token) => {
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "x-access-token": token
+        },
+        redirect: "follow"
+    }
+
+    try {
+        const response = await fetch(`/api/consultant/plans`, options);
+        const user = await response.json();
+
+        return user;
+
+    } catch (error) {
+
+    }
+}

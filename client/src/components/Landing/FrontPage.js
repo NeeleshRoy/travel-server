@@ -3,7 +3,7 @@ import LoginForm from './LoginForm';
 
 function FrontPage(props) {
     return (
-        <div className="frontpage">
+        <div className="frontpage container">
             <div className="columns">
                 <div className="column"></div>
                 <div className="column">

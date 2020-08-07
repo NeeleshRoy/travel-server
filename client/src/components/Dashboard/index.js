@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Admin from './Admin';
-import Consultant from './Consultant';
+import Admin from './admin';
+import Consultant from './consultant';
 
 const Dashboard = (props) => {
     return (

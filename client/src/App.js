@@ -9,9 +9,7 @@ function App() {
   return (
     <CookiesProvider>
       <div className="App">
-        <header className="App-header">
-          <Landing />
-        </header>
+        <Landing />
       </div>
     </CookiesProvider>
   );

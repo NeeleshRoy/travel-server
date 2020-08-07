@@ -25,11 +25,9 @@ function Landing() {
 
     return (
         <div>
-            <div className="container">
-                {isLoggedIn ?
-                    <Dashboard user={user} /> :
-                    <FrontPage initiateLogin={initiateLogin} />}
-            </div>
+            {isLoggedIn ?
+                <Dashboard user={user} /> :
+                <FrontPage initiateLogin={initiateLogin} />}
         </div>
     )
 }
