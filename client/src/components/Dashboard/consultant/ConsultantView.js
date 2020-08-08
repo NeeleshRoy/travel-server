@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { getConsultantPlans } from '../../../translate';
 
+import { Switch, Route } from 'react-router-dom';
+
 import Plans from './Plans';
 
 function ConsultantView(props) {
@@ -21,6 +23,11 @@ function ConsultantView(props) {
 
     return (
         <>
+            <Switch>
+                <Route path="/consultant/plan/edit/:id">
+                    <EditPlan />
+                </Route>
+            </Switch>
             <div className="c-welcome">
                 Welcome {consultant.firstname}
             </div>

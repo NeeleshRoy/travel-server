@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function Plans(props) {
     return (
         props.plans.map(plan => {
             return (
-                <div className="column is-one-quarter">
-                    <div className="c-plan" key={plan._id}>
+                <div className="column is-one-fifth" key={plan._id}>
+                    <div className="c-plan">
                         <div className="card">
                             <div className="card-image">
                                 <figure className="image is-4by3">
@@ -13,12 +14,16 @@ function Plans(props) {
                                 </figure>
                             </div>
                             <div className="card-content">
-                                <p class="title is-4">{plan.name}</p>
-                                <p class="subtitle is-6">Price : &#8377; {plan.price}</p>
+                                <p className="title is-4">{plan.name}</p>
+                                <p className="subtitle is-6">Price : &#8377; {plan.price}</p>
                                 <div className="content">
                                     {plan.overview}
                                 </div>
-                                <button className="button is-link"> Edit </button>
+                                <Link
+                                    to={`/consultant/plan/edit/${plan._id}`}
+                                    className="button is-link">
+                                    Edit
+                                </Link>
                                 <button className="button is-danger ml-2"> Delete </button>
                             </div>
                         </div>
